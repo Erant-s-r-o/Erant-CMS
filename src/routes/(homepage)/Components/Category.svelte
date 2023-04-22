@@ -1,0 +1,67 @@
+<script>
+	export let text = ''
+	export let imgLink = ''
+</script>
+
+<button>
+	<div>
+		{#if imgLink !== ''}
+			<img alt="" style="flex-grow: 1" src={imgLink} />
+		{/if}
+	</div>
+	<h3>
+		{text}
+	</h3>
+</button>
+
+<style>
+	button {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		color: #61646b;
+	}
+
+	button:active,
+	button:hover {
+		opacity: 70%;
+	}
+
+	button > h3 {
+		font-family: 'Source Sans Pro';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 15px;
+		line-height: 20px;
+	}
+
+	button > div {
+		width: 64px;
+		height: 64px;
+		overflow: none;
+		background-color: #efeff0;
+
+		border-radius: 200px;
+		border: 2px solid #afb1b6;
+
+		display: flex;
+		align-items: stretch;
+		justify-content: stretch;
+
+		overflow: hidden;
+
+		background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='mask0_1380_1768' style='mask-type:alpha' maskUnits='userSpaceOnUse' x='0' y='0' width='20' height='20'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.000488281 0H19.9601V19.9498H0.000488281V0Z' fill='white'/%3E%3C/mask%3E%3Cg mask='url(%23mask0_1380_1768)'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.65049 1.5C3.12949 1.5 1.50049 3.227 1.50049 5.899V14.051C1.50049 16.724 3.12949 18.45 5.65049 18.45H14.3005C16.8275 18.45 18.4605 16.724 18.4605 14.051V5.899C18.4605 3.227 16.8275 1.5 14.3005 1.5H5.65049ZM14.3005 19.95H5.65049C2.27049 19.95 0.000488281 17.579 0.000488281 14.051V5.899C0.000488281 2.371 2.27049 0 5.65049 0H14.3005C17.6855 0 19.9605 2.371 19.9605 5.899V14.051C19.9605 17.579 17.6855 19.95 14.3005 19.95Z' fill='%23AFB1B6'/%3E%3C/g%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.28126 15.1799C3.09526 15.1799 2.91026 15.1119 2.76526 14.9739C2.46426 14.6899 2.45226 14.2139 2.73726 13.9149L4.26526 12.3019C5.07426 11.4429 6.43926 11.4009 7.30226 12.2109L8.26026 13.1829C8.52726 13.4529 8.96126 13.4579 9.22926 13.1939C9.33026 13.0749 11.5083 10.4299 11.5083 10.4299C11.9223 9.92789 12.5063 9.61789 13.1553 9.55389C13.8053 9.49689 14.4363 9.68589 14.9393 10.0989C14.9823 10.1339 15.0213 10.1679 17.2173 12.4229C17.5063 12.7189 17.5013 13.1939 17.2043 13.4829C16.9083 13.7739 16.4323 13.7649 16.1433 13.4689C16.1433 13.4689 14.0943 11.3659 13.9483 11.2239C13.7933 11.0969 13.5443 11.0229 13.2993 11.0469C13.0503 11.0719 12.8263 11.1909 12.6673 11.3839C10.3433 14.2029 10.3153 14.2299 10.2773 14.2669C9.41926 15.1089 8.03426 15.0949 7.19126 14.2349C7.19126 14.2349 6.26126 13.2909 6.24526 13.2719C6.01426 13.0579 5.60226 13.0719 5.35526 13.3329L3.82526 14.9459C3.67726 15.1019 3.47926 15.1799 3.28126 15.1799Z' fill='%23AFB1B6'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.55769 6.12891C6.00469 6.12891 5.55469 6.57891 5.55469 7.13291C5.55469 7.68691 6.00469 8.13791 6.55869 8.13791C7.11269 8.13791 7.56369 7.68691 7.56369 7.13291C7.56369 6.57991 7.11269 6.12991 6.55769 6.12891ZM6.55869 9.63791C5.17769 9.63791 4.05469 8.51391 4.05469 7.13291C4.05469 5.75191 5.17769 4.62891 6.55869 4.62891C7.94069 4.62991 9.06369 5.75391 9.06369 7.13291C9.06369 8.51391 7.93969 9.63791 6.55869 9.63791Z' fill='%23AFB1B6'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+	@media screen and (max-width: 370px) {
+		button {
+			gap: 2.5vw;
+		}
+		button > div {
+			width: 18vw;
+			height: 18vw;
+		}
+	}
+</style>
