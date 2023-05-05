@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { account, user } from '$lib/appwrite';
+	import { account, erant, user } from '$lib/appwrite';
 	import Loading from '$lib/components/Common/Loading.svelte';
 	import HiddenInput from '$lib/components/Inputs/Hidden_Input.svelte';
 	import GoogleLogo from '$lib/svg/GoogleLogo.svelte';
@@ -50,7 +50,7 @@
 			}
 
 			await user.create(ID.unique(), email, password, name);
-			await user.createEmailSession(email, password);
+			await erant.createEmailSession(email, password);
 			await user.createVerification(
 				`${browser ? location.origin : 'erant.cz'}/register/emailverification/${erantId}`
 			);

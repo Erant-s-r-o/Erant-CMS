@@ -1,0 +1,13 @@
+{
+	"page": {
+		"home": {
+			"title": "Discover the best Travel Experiences"
+		},
+        "Map": {
+			"title": "Map the best Travel Experiences"
+		},
+        "register": {
+			"title": "Register to the best Travel Experiences"
+		}
+	}
+}

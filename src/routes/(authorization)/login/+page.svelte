@@ -8,7 +8,7 @@
 	import Button from '$lib/components/Buttons/Button.svelte';
 	import { browser } from '$app/environment';
 	import cookie from '$lib/utils/cookie';
-	import { user } from '$lib/appwrite';
+	import { erant, user } from '$lib/appwrite';
 	import { goto } from '$app/navigation';
 
 	export let purpose = 'login'; //possible values login, register
@@ -26,10 +26,9 @@
 			await user.deleteSessions();
 		} catch (error) {}
 		try {
-			await user.createEmailSession(email, password);
-			const { jwt } = user
-				//if (navigation.canGoBack) navigation.back()
-				.goto('/');
+			await erant.createEmailSession(email, password);
+			//if (navigation.canGoBack) navigation.back()
+			goto('/');
 		} catch (err) {
 			//if (err instanceof AppwriteException) error = getErrorMessage(err.code);
 			state = 'basic';

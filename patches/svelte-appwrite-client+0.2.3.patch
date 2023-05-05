@@ -1,0 +1,45 @@
+diff --git a/node_modules/svelte-appwrite-client/src/lib/auth.ts b/node_modules/svelte-appwrite-client/src/lib/auth.ts
+index ae7aebf..b3a308d 100644
+--- a/node_modules/svelte-appwrite-client/src/lib/auth.ts
++++ b/node_modules/svelte-appwrite-client/src/lib/auth.ts
+@@ -3,6 +3,7 @@ import { writable } from 'svelte/store'
+ 
+ import type { Models } from 'appwrite'
+ import type { Writable } from 'svelte/store'
++import { browser } from '$app/environment';
+ 
+ export default (account: Account) => {
+ 	const client = account.client
+@@ -17,18 +18,22 @@ export default (account: Account) => {
+ 		constructor() {
+ 			super(client)
+ 
+-			this.__get().then(() => this.isLoadingStore.set(false))
++			if (browser) {
++				this.__get().then(() => this.isLoadingStore.set(false))
++
++				client.subscribe('account', (response) => {
++					if (response.events.includes('users.*.update')) {
++						return this.__get()
++					}
++	
++					if (response.events.includes('users.*.delete')) {
++						this.deleteSessions()
++						return this.userStore.set(null)
++					}
++				})
++			}
+ 
+-			client.subscribe('account', (response) => {
+-				if (response.events.includes('users.*.update')) {
+-					return this.__get()
+-				}
+ 			
+-				if (response.events.includes('users.*.delete')) {
+-					this.deleteSessions()
+-					return this.userStore.set(null)
+-				}
+-			})
+ 		}
+ 
+ 		async createEmailSession(email: string, password: string) {
